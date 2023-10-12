@@ -1,0 +1,414 @@
+openapi: "3.0.3"
+info:
+  title: "APIPOC TestPoc Management REST Interface 1"
+  version: "1.0.0"
+  termsOfService: "https://www.ericsson.com/en/legal"
+  contact:
+    name: "Ericsson Contact"
+    url: "http://www.ericsson.com/contact"
+  license:
+    name: "COPYRIGHT Ericsson 2022"
+    url: "https://www.ericsson.com/en/legal"
+  description: "APIPOC Test Management."
+tags:
+- name: "Customer"
+  description: "Customer Resource."
+servers:
+- url: "{scheme}://{host}:{port}"
+  variables:
+    scheme:
+      enum:
+      - "http"
+      - "https"
+      default: "https"
+      description: "request scheme"
+    host:
+      default: "host"
+      description: "this value is assigned by the service provider"
+    port:
+      default: "8080"
+      description: "the port of the service"
+  description: "The production API server"
+paths:
+  /customer:
+    post:
+      operationId: "createCustomer"
+      tags:
+      - "Customer"
+      security:
+      - bearerAuth: []
+      requestBody:
+        $ref: "#/components/requestBodies/CreateCustomerRequest"
+      responses:
+        "201":
+          $ref: "#/components/requestBodies/CustomerResponse"
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Bad Request"
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Unauthorized"
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Forbidden"
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Not Acceptable"
+        "408":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Request Timeout"
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Unsupported Media Type"
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Internal Server Error"
+        "501":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Not Implemented"
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Service Unavailable"
+      summary: "Creates the customer."
+      description: "Creates the customer."
+    patch:
+      operationId: "updateCustomer"
+      tags:
+      - "Customer"
+      security:
+      - bearerAuth: []
+      summary: "Updates the customer."
+      requestBody:
+        $ref: "#/components/requestBodies/UpdateCustomerRequest"
+      responses:
+        "200":
+          $ref: "#/components/requestBodies/CustomerResponse"
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Bad Request"
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Unauthorized"
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Forbidden"
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Not Found"
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Not Acceptable"
+        "408":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Request Timeout"
+        "415":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Unsupported Media Type"
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Internal Server Error"
+        "501":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Not Implemented"
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Service Unavailable"
+  "/customer/{customerId}":
+    get:
+      operationId: "readCustomer"
+      tags:
+      - "Customer"
+      security:
+      - bearerAuth: []
+      responses:
+        "200":
+          $ref: "#/components/requestBodies/CustomerResponse"
+        "400":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Bad Request"
+        "401":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Unauthorized"
+        "403":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Forbidden"
+        "404":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Not Found"
+        "406":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Not Acceptable"
+        "408":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Request Timeout"
+        "500":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Internal Server Error"
+        "501":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Not Implemented"
+        "503":
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Error"
+          description: "Service Unavailable"
+      parameters:
+      - name: "customerId"
+        in: "path"
+        schema:
+          type: "string"
+          maxLength: 256
+          pattern: "^(?=\\s*\\S).*$"
+          description: "Public Identifier, max 256 characters."
+        required: true
+        description: "Customer Identifier"
+      summary: "Read Customer."
+      description: "Read Customer."
+  /customer/{customerId}/subscription:
+    post:
+      operationId: "createSubscription"
+      tags:
+      - "Customer Subscription"
+      security:
+      - bearerAuth: []
+      requestBody:
+        $ref: "#/components/requestBodies/CreateSubscriptionRequest"
+      responses:
+        "201":
+          $ref: "#/components/requestBodies/SubscriptionResponse"
+      summary: "Creates the subscription for a customer"
+    patch:
+      operationId: "updateSubscription"
+      tags:
+      - "Customer Subscription"
+      security:
+      - bearerAuth: []
+      requestBody:
+        $ref: "#/components/requestBodies/UpdateSubscriptionRequest"
+      responses:
+        "201":
+          $ref: "#/components/requestBodies/SubscriptionResponse"
+      summary: "Updates the subscription for a customer"
+    get:
+      operationId: "readAllSubscriptions"
+      tags:
+      - "Customer Subscription"
+      security:
+      - bearerAuth: []
+      responses:
+        "200":
+          $ref: "#/components/requestBodies/ReadAllSubscriptionResponse"
+      summary: "Read all subscriptions for a customer"
+  /customer/{customerId}/subscription/{subscriptionId}:
+    get:
+      operationId: "readSubscription"
+      tags:
+      - "Customer Subscription"
+      security:
+      - bearerAuth: []
+      responses:
+        "200":
+          $ref: "#/components/requestBodies/SubscriptionResponse"
+      summary: "Read a subscription for a customer"
+components:
+  requestBodies:
+    CreateCustomerRequest:
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/SpecificationId'
+            - $ref: '#/components/schemas/Customer'
+    CreateSubscriptionRequest:
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/SpecificationId'
+            - $ref: '#/components/schemas/Subscription'
+    UpdateCustomerRequest:
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/IdOrExternalId'
+            - $ref: '#/components/schemas/Customer'
+    UpdateSubscriptionRequest:
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/IdOrExternalId'
+            - $ref: '#/components/schemas/Subscription'
+    CustomerResponse:
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/IdOrExternalId'
+            - $ref: '#/components/schemas/Customer'
+            - $ref: '#/components/schemas/SpecificationId'
+            - $ref: '#/components/schemas/Customer-subscriptions'
+    SubscriptionResponse:
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/IdOrExternalId'
+            - $ref: '#/components/schemas/Subscription'
+            - $ref: '#/components/schemas/SpecificationId'
+    ReadAllSubscriptionResponse:
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Customer-subscriptions'
+  schemas:
+    IdPattern:
+      type: string
+      maxLength: 256
+      pattern: "^(?=\\s*\\S).*$"
+    IdOrExternalId:
+      oneOf:
+      - $ref: '#/components/schemas/Id'
+      - $ref: '#/components/schemas/ExternalId'
+    Id:
+      type: "object"
+      required:
+        - id
+      properties:
+        id:
+          $ref: '#/components/schemas/IdPattern'
+    ExternalId:
+      type: "object"
+      required:
+        - externalId
+      properties:
+        externalId:
+          $ref: '#/components/schemas/IdPattern'
+    SpecificationId:
+      type: "object"
+      properties:
+        specificationId:
+          $ref: '#/components/schemas/IdPattern'
+    Customer-subscriptions:
+      type: "object"
+      properties:
+        subscriptions:
+          type: "array"
+          items:
+            $ref: "#/components/schemas/IdOrExternalId"
+      description: "The customers subscriptions id"
+    Customer:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "The name of the customer"
+        nameTwo:
+          type: "string"
+          description: "The name two of the customer"
+        age:
+          type: "string"
+          description: "The age of the customer"
+      description: "This is a customer"
+    Subscription:
+      type: "object"
+      properties:
+        name:
+          type: "string"
+          description: "The name of the subscription"
+      description: "This is a subscription"
+    Error:
+      type: "object"
+      properties:
+        details:
+          type: "string"
+          description: "The details of the error"
+      description: "This is an error message"
+  securitySchemes:
+    bearerAuth:
+      type: "http"
+      scheme: "bearer"
+      bearerFormat: "JWT"
