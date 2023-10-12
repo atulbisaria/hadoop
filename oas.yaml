@@ -45,61 +45,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Customer"
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Bad Request"
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Unauthorized"
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Forbidden"
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Not Acceptable"
-        "408":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Request Timeout"
-        "415":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Unsupported Media Type"
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Internal Server Error"
-        "501":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Not Implemented"
-        "503":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Service Unavailable"
+          description: "abc"
       summary: "Creates the customer."
       description: "Creates the customer."
     patch:
@@ -117,67 +63,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Customer"
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Bad Request"
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Unauthorized"
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Forbidden"
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Not Found"
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Not Acceptable"
-        "408":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Request Timeout"
-        "415":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Unsupported Media Type"
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Internal Server Error"
-        "501":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Not Implemented"
-        "503":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Service Unavailable"
+          description: "abc"
   "/customer/{customerId}":
     get:
       operationId: "readCustomer"
@@ -191,61 +77,7 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Customer"
-          description: ""
-        "400":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Bad Request"
-        "401":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Unauthorized"
-        "403":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Forbidden"
-        "404":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Not Found"
-        "406":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Not Acceptable"
-        "408":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Request Timeout"
-        "500":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Internal Server Error"
-        "501":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Not Implemented"
-        "503":
-          content:
-            application/json:
-              schema:
-                $ref: "#/components/schemas/Error"
-          description: "Service Unavailable"
+          description: "abc"
       parameters:
       - name: "customerId"
         in: "path"
