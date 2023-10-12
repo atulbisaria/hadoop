@@ -109,7 +109,11 @@ paths:
         $ref: "#/components/requestBodies/UpdateCustomerRequest"
       responses:
         "200":
-          $ref: "#/components/requestBodies/CustomerResponse"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Customer"
+          description: ""
         "400":
           content:
             application/json:
@@ -257,7 +261,11 @@ paths:
         $ref: "#/components/requestBodies/CreateSubscriptionRequest"
       responses:
         "201":
-          $ref: "#/components/requestBodies/SubscriptionResponse"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+          description: ""
       summary: "Creates the subscription for a customer"
     patch:
       operationId: "updateSubscription"
@@ -269,7 +277,11 @@ paths:
         $ref: "#/components/requestBodies/UpdateSubscriptionRequest"
       responses:
         "201":
-          $ref: "#/components/requestBodies/SubscriptionResponse"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Subscription"
+          description: ""
       summary: "Updates the subscription for a customer"
     get:
       operationId: "readAllSubscriptions"
